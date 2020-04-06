@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1094378162494",
+    "firebase_url": "https://hackovid.firebaseio.com",
+    "project_id": "hackovid",
+    "storage_bucket": "hackovid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094378162494:android:ae315490b505a94d08446f",
+        "android_client_info": {
+          "package_name": "com.example.hackovid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094378162494-avvendkful8ssi2lon5aovnuhrrfdvl5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWQyqGk6XuGJ53SvNMmO_fGGW6CrP2Z3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094378162494-avvendkful8ssi2lon5aovnuhrrfdvl5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
