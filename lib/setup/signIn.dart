@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hackovid/pages/home.dart';
+import 'package:hackovid/pages/homeMap.dart';
 import 'package:hackovid/pages/signup.dart';
 
 class LoginPage extends StatefulWidget{
@@ -9,9 +9,11 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPageState extends State<LoginPage> {
   String _email, _password;
+  double screenHeight;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context){
+    screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         resizeToAvoidBottomPadding: false,
 
@@ -33,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(height: 80,),
+                SizedBox(height: screenHeight/20,),
 
                 Padding(
                   padding: EdgeInsets.all(5),
@@ -42,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                 ),
-                SizedBox(height: 70 ,),
+                SizedBox(height: screenHeight/20 ,),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
@@ -50,10 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(15),
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 65,),
+                          SizedBox(height: screenHeight/20,),
                           Container(
                             //padding: EdgeInsets.all(20),
                             decoration: BoxDecoration(
@@ -112,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.all(30),
+                            padding: EdgeInsets.all(screenHeight/25),
                             child: Column(
                               children: <Widget>[
                                 ButtonTheme(
@@ -133,14 +135,10 @@ class _LoginPageState extends State<LoginPage> {
                                     )
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.all(10),
+                                  padding: EdgeInsets.all(5),
                                 ),
 
-
-                                Padding(
-                                  padding: EdgeInsets.all(10),
-                                ),
-                                Row(
+                                Column(
                                   children: <Widget>[
                                     Text("Encara no tens un compte?", style: TextStyle(color: Colors.grey[700], fontSize: 14),),
                                     Padding(
@@ -198,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
       formState.save();
       try {
         AuthResult user =  await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeMap()));
       }
       catch(e){
         print(e.message);
@@ -206,8 +204,6 @@ class _LoginPageState extends State<LoginPage> {
 
     }
   }
-
-
 
   void signup() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
