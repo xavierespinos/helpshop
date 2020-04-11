@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'homeMap.dart';
+
+List helper = new List();
+List helping = new List();
 
 class HomeBasket extends StatefulWidget {
   @override
@@ -8,8 +13,14 @@ class HomeBasket extends StatefulWidget {
 }
 
 class _HomeStateBasket extends State<HomeBasket> {
+  String uid;
+  final databaseReference = Firestore.instance;
+  double screenHeight;
+
   @override
   Widget build(BuildContext context) {
+
+    screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text("HELPSHOP"),
@@ -55,6 +66,39 @@ class _HomeStateBasket extends State<HomeBasket> {
             ),
           ),
 
+          Text("Ajudant", style: TextStyle(fontSize: 22, color: Colors.orange[800])),
+
+          Container(
+            height: screenHeight/4,
+            child: ListView.builder(
+                itemCount: helping.length,
+                itemBuilder: (context, index){
+                  return Card(
+                      child: ListTile(
+                        title: Text(helping[index][2]),
+                      )
+                  );
+                }
+            ),
+          ),
+
+          Text("Ajuda Demanada",  style: TextStyle(fontSize: 22, color: Colors.orange[800])),
+
+          Container(
+            height: screenHeight/4,
+            child: ListView.builder(
+                itemCount: helper.length,
+                itemBuilder: (context, index){
+                  return Card(
+                      child: ListTile(
+                        title: Text(helper[index]),
+
+                      )
+                  );
+                }
+            ),
+          ),
+
         ],
       ),
     );
@@ -64,4 +108,7 @@ class _HomeStateBasket extends State<HomeBasket> {
     Navigator.of(context).pop();
     //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeMap()));
   }
+
+
+
 }

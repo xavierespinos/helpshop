@@ -11,7 +11,7 @@
         android:label="HELPSHOP"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCbaOUfiyYhdQ8TmO91vcROoYqzuU3W0CM"/>
+            android:value="AIzaSyAWooJdl6Z_b79sZZ-wR48jUHBkceS58SY"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

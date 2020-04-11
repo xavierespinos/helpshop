@@ -19,6 +19,7 @@ class _AddProdState extends State<AddProd> {
   @override
   Widget build(BuildContext context) {
     _data = widget.data;
+
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -112,7 +113,7 @@ class _AddProdState extends State<AddProd> {
                                     color: Colors.orange[800],
                                     onPressed: publish,
                                     child: Text(
-                                      "PUBLICAR", style: TextStyle(
+                                      "AFEGIR", style: TextStyle(
                                         fontSize: 20,
                                         color: Colors.grey[800]
                                     ),
@@ -150,9 +151,7 @@ class _AddProdState extends State<AddProd> {
 
 
   void publish() {
-    _items.clear();
-    Navigator.of(context).pop();
-    Navigator.of(context).pop();
+    Navigator.pop(context, _items);
 
   }
 

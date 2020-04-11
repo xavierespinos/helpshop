@@ -8,7 +8,7 @@ class AddItem extends StatefulWidget {
 class _AddItemState extends State<AddItem> {
   String _item;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
