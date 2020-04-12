@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932925773468:android:fbe41926eb84a40599ff59",
+        "android_client_info": {
+          "package_name": "com.helpshop.helpshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932925773468-6e2t2q8srr97h0lu1a4j2s4jo3u3b12q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWhHHKyUGS33W048pMiXH_g-JUmrZ6P_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932925773468-6e2t2q8srr97h0lu1a4j2s4jo3u3b12q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

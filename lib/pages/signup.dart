@@ -68,6 +68,7 @@ class _SignUpState extends State<SignUp> {
                             Container(
                               child: TextFormField(
                                 onSaved: (input) => _mail = input,
+                                keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   labelStyle: TextStyle(
                                     color: Colors.orange,

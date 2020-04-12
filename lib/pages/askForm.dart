@@ -27,6 +27,7 @@ class _AskShopState extends State<AskShop> {
   double screenWidth;
   @override
   Widget build(BuildContext context) {
+
   screenHeight = MediaQuery.of(context).size.height;
   screenWidth =  MediaQuery.of(context).size.width;
   return Scaffold(
@@ -184,13 +185,6 @@ class _AskShopState extends State<AskShop> {
                             ),
 
 
-
-
-
-
-
-
-
                             Padding(
                               padding: EdgeInsets.all(screenHeight/30),
                             ),
@@ -227,7 +221,7 @@ class _AskShopState extends State<AskShop> {
                                           color: Colors.orange[800],
                                           onPressed: addUbi,
                                           child: Text(
-                                            "Afegir Ubicació", style: TextStyle(
+                                            "Ubicació", style: TextStyle(
                                               fontSize: 20,
                                               color: Colors.white
                                           ),
@@ -240,7 +234,7 @@ class _AskShopState extends State<AskShop> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(8),
+                                        padding: EdgeInsets.only(right: screenWidth/5),
                                       ),
                                       ButtonTheme(
                                         minWidth: screenWidth/3,
@@ -249,7 +243,7 @@ class _AskShopState extends State<AskShop> {
                                           color: Colors.orange[800],
                                           onPressed: addProd,
                                           child: Text(
-                                            "Afegir Productes", style: TextStyle(
+                                            "Productes", style: TextStyle(
                                               fontSize: 20,
                                               color: Colors.white
                                           ),
@@ -359,6 +353,16 @@ class _AskShopState extends State<AskShop> {
       "street" : data.street,
       "witems" : listItems,
       "name" : data.name,
+    });
+    
+    await databaseReference.collection("helpMarks").document(uid).collection("help").document().
+        setData({
+      "date" : data.date,
+      "hour" : data.hour,
+      "name" : data.name,
+      "street" : data.street,
+      "items" : data.items,
+      "accpeted" : false,
     });
 
     Navigator.pop(context);

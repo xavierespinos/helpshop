@@ -8,6 +8,7 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String _email, _password;
   double screenHeight;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -76,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                                   //if(input.isEmpty) return "Perfavor introdueix un email";
                                   //},
                                   onSaved: (input) => _email = input,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     focusedBorder: InputBorder.none,
                                       border: InputBorder.none,
@@ -122,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                                     height: 40,
                                     child: RaisedButton(
                                       color: Colors.orange[800],
-                                      onPressed: login,
+                                      onPressed: (){login(context);},
                                       child: Text("Login",
                                         style: TextStyle(
                                           fontSize: 18
@@ -189,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-  Future <void> login() async{
+  Future <void> login(BuildContext context) async{
 
     final formState = _formKey.currentState;
     if(formState.validate()){

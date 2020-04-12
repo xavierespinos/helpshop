@@ -1,4 +1,4 @@
-package com.example.hackovid
+package com.helpshop.helpshop
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -23,9 +23,12 @@ class _HomeStateMap extends State<HomeMap> {
   GoogleMapController mapController;
   var currentLocation;
   final databaseReference = Firestore.instance;
+  double screenHeight;
 
   void initState(){
     markers.clear();
+    helping.clear();
+    helper.clear();
     getMarkers();
     getHelping();
     getHelps();
@@ -43,6 +46,7 @@ class _HomeStateMap extends State<HomeMap> {
 
   @override
   Widget build(BuildContext context) {
+    screenHeight = MediaQuery.of(context).size.height;
     getMarkers();
     return Scaffold(
       appBar: AppBar(
@@ -52,11 +56,14 @@ class _HomeStateMap extends State<HomeMap> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
+            Padding(padding: EdgeInsets.all(10)),
+            Icon(Icons.account_circle, size: 100, color: Colors.orange[800],),
+            Padding(padding: EdgeInsets.only(bottom: screenHeight/1.5)),
             FlatButton(
               onPressed: _signOut,
               child: Icon(
                 Icons.exit_to_app,
-                size: 30,
+                size: 40,
               ),
             ),
 
@@ -107,7 +114,7 @@ class _HomeStateMap extends State<HomeMap> {
                     GoogleMap(
                       onMapCreated: onMapCreated,
                       initialCameraPosition: CameraPosition(
-                        target: LatLng(41.0879, 0.639),
+                        target: LatLng(41.088, 0.639),
                         zoom: 16.0,
                       ),
                       markers: getMarkers(),
@@ -196,7 +203,7 @@ class _HomeStateMap extends State<HomeMap> {
   }
 
   onTapMarker(String documentID)async{
-    getHelpData(documentID);
+    await getHelpData(documentID);
     tapMarker(helpData, documentID);
   }
 
@@ -211,6 +218,10 @@ class _HomeStateMap extends State<HomeMap> {
           );
         }
     );
+    setState(() {
+      getHelping();
+      getHelps();
+    });
   }
 
   Future getHelpData(String documentID) async {
@@ -233,7 +244,7 @@ class _HomeStateMap extends State<HomeMap> {
         helping.add(d.data.values.toList());
       });
     });
-    print(helping);
+
   }
 
   Future getHelps() async {

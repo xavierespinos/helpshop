@@ -13,20 +13,38 @@ class _AddUbiState extends State<AddUbi> {
   GoogleMapController mapController;
   String searchAddress;
   Set<Marker> markers = new Set();
+  bool mapToggle = false;
+  var currentLocation;
+
+  void initState(){
+    super.initState();
+    Geolocator().getCurrentPosition().then((currLoc){
+      setState(() {
+        currentLocation = currLoc;
+        mapToggle = true;
+
+      });
+    });
+
+
+  }
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          GoogleMap(
+          mapToggle ? GoogleMap(
             onMapCreated: onMapCreated,
             initialCameraPosition: CameraPosition(
-              target: LatLng(41.0879, 0.6391),
+              target: LatLng(41.088, 0.639),
               zoom: 16,
             ),
             markers: markers,
-          ),
+
+          ) : Center(child: Text(
+              "Carregant ubicació..."
+          ),),
           Positioned(
             top: 40,
             right: 15,
@@ -119,8 +137,6 @@ class _AddUbiState extends State<AddUbi> {
     List<double> pos = new List();
     pos.add(lat);
     pos.add(long);
-    print(lat);
-    print(long);
     Navigator.pop(context, pos);
   }
 }

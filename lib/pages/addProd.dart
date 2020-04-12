@@ -14,11 +14,19 @@ class AddProd extends StatefulWidget {
 class _AddProdState extends State<AddProd> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List _data;
-
   double screenHeight;
+
+  @override
+  void initState() {
+    _items.clear();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     _data = widget.data;
+
+
 
     screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
